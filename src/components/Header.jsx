@@ -1,15 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Header = ({title, description}) => {
-    // console.log("typeof props", typeof props);
-    // console.log("props", props);
-    // let {title, description} = props;
+const Header = ({ title, description }) => {
+
+    let [visible, setVisible] = useState(true);
+
+    function handleClick() {
+        setVisible(!visible);
+    }
+
     return (
         <>
-            <h1>{title}</h1>
-            <p>{description}</p>
+            <div className={visible ? '' : 'hide'}>
+                <h1>{title}</h1>
+                <p>{description}</p>
+            </div>
+
+            <button
+                className="btn btn-primary me-2"
+                onClick={handleClick}
+            >
+                {visible ? "Hide Header" : "Show Header"}
+            </button>
         </>
     )
 }
 
-export default Header
+            export default Header
