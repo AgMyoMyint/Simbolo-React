@@ -1,7 +1,8 @@
 import React from 'react'
 import TrashFullIcon from './icons/TrashFullIcon';
+import PencileFullIcon from './icons/PencileFullIcon';
 
-const ToDoItem = ({ todo, setToDos, deleteToDo }) => {
+const ToDoItem = ({ todo, setToDos, deleteToDo, editMode, setEditMode }) => {
 
     const completedStyle = {
         textDecoration: "line-through",
@@ -29,16 +30,20 @@ const ToDoItem = ({ todo, setToDos, deleteToDo }) => {
             <div className='row'>
                 <div className="col-lg-1 col-1 d-flex align-items-center">
                     <input
+                        disabled={editMode.isEditMode}
                         className='checkbox'
                         type="checkbox"
                         checked={todo.completed}
                         onChange={() => handleChange(todo.id)} />
                 </div>
-                <div className="col-lg-9 col-9 d-flex align-items-center" >
+                <div className="col-lg-8 col-8 d-flex align-items-center" >
                     <span className="to-do-text" style={todo.completed? completedStyle : null}>{todo.title}</span>
                 </div>
-                <div className="col-lg-2 col-2 text-right">
-                    <button className='delete-btn btn btn-link' onClick={() => deleteToDo(todo.id)}>
+                <div className="col-lg-3 col-3 text-right" >
+                    <button title="edit" className='edit-btn btn btn-link' onClick={() => setEditMode({ isEditMode : true, editId : todo.id})} disabled={editMode.isEditMode}>
+                        <PencileFullIcon />
+                    </button>
+                    <button title="remove" className='delete-btn btn btn-link' onClick={() => deleteToDo(todo.id)} disabled={editMode.isEditMode}>
                         <TrashFullIcon />
                     </button>
                 </div>

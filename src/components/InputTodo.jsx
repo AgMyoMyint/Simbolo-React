@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PlusCircleIcon from './icons/PlusCircleIcon'
 
-const InputTodo = ({addToDoItem}) => {
+const InputTodo = ({addToDoItem, editMode}) => {
 
   const [title, setTitle] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -34,12 +34,13 @@ const InputTodo = ({addToDoItem}) => {
       <div className="col-lg-12">
         <form onSubmit={handleSubmit}>
           <input
+            disabled={editMode.isEditMode}
             type="text"
             className="form-control form-control-lg add-input"
             placeholder="Add Todo..."
             value={title}
             onChange={(e) => setTitle(e.target.value)} />
-          <button className="btn btn-link add-text-btn rounded-start" type="submit">
+          <button title="Add Todo.." className="btn btn-link add-text-btn rounded-start" type="submit" disabled={editMode.isEditMode}>
             <PlusCircleIcon />
           </button>
           <span className='error-message'>{errorMessage}</span>

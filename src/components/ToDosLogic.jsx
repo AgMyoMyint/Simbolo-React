@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 
 const ToDosLogic = () => {
 
+    const [editMode, setEditMode] = useState({ isEditMode : false, editId : ''});
+
     let [todos, setToDos] = useState([
         { id: uuidv4(), title: "To buy milk and chocolate for Mom", completed: true, },
         { id: uuidv4(), title: "To install visual studio code in my laptop", completed: false, },
@@ -41,11 +43,11 @@ const ToDosLogic = () => {
             <div className='container'>
                 <div className='col-lg-6 mx-auto col-sm-12 text-center'>
                     <InputTodo 
-                        addToDoItem={addToDoItem} />
+                        addToDoItem={addToDoItem} editMode={editMode}/>
                     <ToDosList 
                         todos={todos} 
                         setToDos={setToDos} 
-                        deleteToDo={deleteToDo} />
+                        deleteToDo={deleteToDo} editMode={editMode} setEditMode={setEditMode} />
                 </div>
             </div>
         </>
