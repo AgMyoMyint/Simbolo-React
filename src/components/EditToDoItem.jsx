@@ -37,7 +37,7 @@ const EditToDoItem = ({ todo, setToDos, setEditMode }) => {
             <form onSubmit={handleSubmit}>
                 <div className='row'>
                     <div className="col-lg-9 col-9 d-flex align-items-center" >
-                        <input type="text" className='form-control ' value={title} onChange={(e) => setTitle(e.target.value)} />
+                        <input type="text" className='form-control ' value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Add Todo item...' />
                     </div>
                     <div className="col-lg-3 col-3 text-right d-flex align-items-center justify-content-end">
                         <button title="Click to update" className='update-btn btn btn-sm btn-success' type="submit" disabled={title == null || title.trim().length == 0}>
