@@ -40,7 +40,7 @@ const InputTodo = ({addToDoItem, editMode}) => {
             placeholder="Add Todo..."
             value={title}
             onChange={(e) => setTitle(e.target.value)} />
-          <button title="Add Todo.." className="btn btn-link add-text-btn rounded-start" type="submit" disabled={editMode.isEditMode}>
+          <button title="Click to add item" className="btn btn-link add-text-btn rounded-start" type="submit" disabled={editMode.isEditMode}>
             <PlusCircleIcon />
           </button>
           <span className='error-message'>{errorMessage}</span>

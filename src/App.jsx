@@ -12,10 +12,12 @@ function App() {
 
   return (
     <>
-      <Header />
-      <ToDosLogic/>
+      <div className='page-container'>
+        <Header />
+        <ToDosLogic />
+      </div>
     </>
-  )
+  );
 }
 
 export default App

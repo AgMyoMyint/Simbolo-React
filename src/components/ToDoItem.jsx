@@ -40,10 +40,10 @@ const ToDoItem = ({ todo, setToDos, deleteToDo, editMode, setEditMode }) => {
                     <span className="to-do-text" style={todo.completed? completedStyle : null}>{todo.title}</span>
                 </div>
                 <div className="col-lg-3 col-3 text-right" >
-                    <button title="edit" className='edit-btn btn btn-link' onClick={() => setEditMode({ isEditMode : true, editId : todo.id})} disabled={editMode.isEditMode}>
+                    <button title="Click to edit" className='edit-btn btn btn-link' onClick={() => setEditMode({ isEditMode : true, editId : todo.id})} disabled={editMode.isEditMode}>
                         <PencileFullIcon />
                     </button>
-                    <button title="remove" className='delete-btn btn btn-link' onClick={() => deleteToDo(todo.id)} disabled={editMode.isEditMode}>
+                    <button title="Click to remove" className='delete-btn btn btn-link' onClick={() => deleteToDo(todo.id)} disabled={editMode.isEditMode}>
                         <TrashFullIcon />
                     </button>
                 </div>
