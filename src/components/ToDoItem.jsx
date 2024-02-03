@@ -1,6 +1,29 @@
 import React from 'react'
+import TrashFullIcon from './icons/TrashFullIcon';
 
-const ToDoItem = ({ todo }) => {
+const ToDoItem = ({ todo, setToDos, deleteToDo }) => {
+
+    const completedStyle = {
+        textDecoration: "line-through",
+        fontStyle: "italic",
+        color: "#595959",
+        opacity: 0.4,
+    };
+
+    const handleChange = (id) => {
+        setToDos(prevState =>
+            prevState.map(x => {
+                if (x.id == id) {
+                    return {
+                        ...x, // the other parameter will have no change
+                        completed: !x.completed,
+                    }
+                }
+                return x;
+            })
+        );
+    };
+
     return (
         <li>
             <div className='row'>
@@ -9,16 +32,14 @@ const ToDoItem = ({ todo }) => {
                         className='checkbox'
                         type="checkbox"
                         checked={todo.completed}
-                        value={todo.id} />
+                        onChange={() => handleChange(todo.id)} />
                 </div>
-                <div className="col-lg-9 col-9 d-flex align-items-center">
-                    {todo.title}
+                <div className="col-lg-9 col-9 d-flex align-items-center" >
+                    <span className="to-do-text" style={todo.completed? completedStyle : null}>{todo.title}</span>
                 </div>
                 <div className="col-lg-2 col-2 text-right">
-                    <button className='delete-btn btn btn-link'>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
-                        </svg>
+                    <button className='delete-btn btn btn-link' onClick={() => deleteToDo(todo.id)}>
+                        <TrashFullIcon />
                     </button>
                 </div>
 
