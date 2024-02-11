@@ -5,17 +5,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 
 import './App.css'
-import Header from './components/Header'
-import ToDosLogic from './components/ToDosLogic'
+import Create from './components/Create'
+import List from './components/List'
+import Edit from './components/Edit'
 
 function App() {
 
   return (
     <>
-      <div className='page-container'>
-        <Header />
-        <ToDosLogic />
-      </div>
+        <List />
     </>
   );
 }
