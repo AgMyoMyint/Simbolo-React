@@ -8,30 +8,28 @@ const Create = ({
   savePost,
 }) => {
   return (
-    <>
-      <form>
-        <h1>Create New Post</h1>
+    <form>
+      <h1>Create New Post</h1>
 
-        <input
-          type="text"
-          placeholder="title"
-          ref={getTitle}
-          onChange={saveTitleToState}
-        />
-        <br />
-        <br />
-        <textarea
-          placeholder="content"
-          ref={getContent}
-          onChange={saveContentToState}
-        ></textarea>
+      <input
+        type="text"
+        placeholder="title"
+        ref={getTitle}
+        onChange={saveTitleToState}
+      />
+      <br />
+      <br />
+      <textarea
+        placeholder="content"
+        ref={getContent}
+        onChange={saveContentToState}
+      ></textarea>
 
-        <br />
-        <br />
+      <br />
+      <br />
 
-        <button onClick={savePost}>Create Post</button>
-      </form>
-    </>
+      <button onClick={savePost}> Create Post </button>
+    </form>
   );
 };
 

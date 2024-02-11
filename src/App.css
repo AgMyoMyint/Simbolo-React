@@ -1,0 +1,4 @@
+table.post-table tr td:last-child
+{
+    text-align: right;
+}

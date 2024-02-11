@@ -4,9 +4,16 @@ import Post from "./Post";
 import Edit from "./Edit";
 
 const List = () => {
+  const tempPosts = 
+  [
+    {id: 1, title: "t1", content: "c1"},
+    {id: 2, title: "t2", content: "c2"},
+    {id: 3, title: "t3", content: "c3"},
+  ];
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(tempPosts);
 
   const [isCreate, setIsCreate] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -39,6 +46,7 @@ const List = () => {
   const toggleEdit = () => {
     setIsEdit(!isEdit);
   };
+
   const editPost = (id) => {
     setEditId(id);
     toggleEdit();
@@ -70,18 +78,16 @@ const List = () => {
   if (isCreate)
   {
     return (
-      <>
-        <Create
-          saveTitleToState={saveTitleToState}
-          saveContentToState={saveContentToState}
-          getTitle={getTitle}
-          getContent={getContent}
-          savePost={savePost}
-        />
-      </>
+      <Create
+        saveTitleToState={saveTitleToState}
+        saveContentToState={saveContentToState}
+        getTitle={getTitle}
+        getContent={getContent}
+        savePost={savePost}
+      />
     );
   }
-  else if (isEdit) 
+  else if (isEdit)
   {
     const post = posts.find((post) => {
       return post.id === editId;
@@ -97,34 +103,52 @@ const List = () => {
     );
   }
   return (
-    <>
+    <div className="container my-3 p-3">
       <h2>All Posts</h2>
       {
-      !posts.length ? 
-      (
-        <div>
-          <h3>There is nothing to see here!</h3>
-        </div>
-      ) : 
-      (
-        posts.map((eachPost) => {
-          return (
-            <Post
-              id={eachPost.id}
-              key={eachPost.id}
-              title={eachPost.title}
-              content={eachPost.content}
-              editPost={editPost}
-              deletePost={deletePost}
-            />
-          );
-        })
-      )}
+        !posts.length ?
+        (
+          <div>
+            <h3>There is nothing to see here!</h3>
+          </div>
+        )
+        :
+        (
+          <table className="table post-table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Content</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>              
+              {
+                posts.map((eachPost) => {
+                  return (
+                    <Post
+                      id={eachPost.id}
+                      key={eachPost.id}
+                      title={eachPost.title}
+                      content={eachPost.content}
+                      editPost={editPost}
+                      deletePost={deletePost}
+                    />
+                  );
+                })
+              }
+            </tbody>
+          </table>          
+        )
+      }
 
       <br />
       <br />
-      <button onClick={toggleCreate}>Create New</button>
-    </>
+      <button className="btn btn-primary" onClick={toggleCreate}>
+        + Create New
+      </button>
+    </div>
   );
 };
 
