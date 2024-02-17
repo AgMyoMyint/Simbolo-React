@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import './App.css'
-import Dashboard from './pages/Dashboard'
-import Contact from './pages/Contact'
+import Products from './pages/product/Products.jsx'
+import Product from './pages/product/Product.jsx'
+import Cart from './pages/cart/Cart.jsx'
+import CartItem from './pages/cart/CartItem.jsx'
 import Navbar from './components/Navbar'
-import Home from './pages/Home'
-import About from './pages/About'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,10 +12,10 @@ function App() {
   return (
     <>
       <Navbar />
-      <Home />
-      <About />
-      <Dashboard />
-      <Contact />
+      <Cart />
+      <CartItem />
+      <Products />
+      <Product />
     </>
   )
 }
