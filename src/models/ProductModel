@@ -1,0 +1,7 @@
+export class ProductModel 
+{
+    id: Number,
+    productName: String,
+    productImage: any,
+    price: Double,
+}
