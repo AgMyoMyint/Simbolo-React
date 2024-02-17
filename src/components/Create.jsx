@@ -8,10 +8,11 @@ const Create = ({
   savePost,
 }) => {
   return (
-    <form>
-      <h1>Create New Post</h1>
+    <form className="container">
+      <h5>Create New Post</h5>
 
       <input
+        className="form-control"
         type="text"
         placeholder="title"
         ref={getTitle}
@@ -20,6 +21,7 @@ const Create = ({
       <br />
       <br />
       <textarea
+        className="form-control"
         placeholder="content"
         ref={getContent}
         onChange={saveContentToState}
@@ -28,7 +30,9 @@ const Create = ({
       <br />
       <br />
 
-      <button onClick={savePost}> Create Post </button>
+      <button className="btn btn-sm btn-success" onClick={savePost}> Create Post </button>
+      &nbsp;
+      <a href="./components/List.jsx" className="btn btn-sm btn-default">Cancel</a>
     </form>
   );
 };
